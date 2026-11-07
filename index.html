@@ -14,13 +14,21 @@
     <!-- Privacy: send only the origin to other sites when a link is clicked -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
+    <!--
+        Content-Security-Policy (CSP), disabled on purpose for now.
+        Enable it once the site is hosted, then open DevTools > Console and
+        fix any "Refused to load" messages. A real HTTP header is stronger
+        than a meta tag, so move it to your server config when you can.
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+    -->
 
     <!-- Link previews (LinkedIn, WhatsApp, Discord). Change the domain if the site lives elsewhere. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sochan Dangol | Cybersecurity Student and CTF Player">
     <meta property="og:description" content="Ethical hacking and cybersecurity student. Projects, CTF work and hands-on labs.">
-    <meta property="og:image" content="https://sochan.com.np/og-image.jpg">
-    <meta property="og:url" content="https://sochan.com.np/">
+    <meta property="og:image" content="https://sochan001.github.io/My-Portfolio/og-image.jpg">
+    <meta property="og:url" content="https://sochan001.github.io/My-Portfolio/">
     <meta name="twitter:card" content="summary">
 
     <!-- Favicon: an "S_" monogram in the page colors, no extra file needed -->
@@ -37,7 +45,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header>
-        <img src="Hooded Cyberpunk Dragon Triad.png" alt="Anime-style hooded hacker avatar with a glowing amber dragon and two blue dragons behind" class="profile-picture" width="600" height="600" fetchpriority="high" decoding="async">
+        <img src="avatar.webp" alt="Hacker avatar with a glowing amber dragon and two blue dragons behind" class="profile-picture" width="600" height="600" fetchpriority="high" decoding="async">
         <h1 class="name">Sochan Dangol (Dr450n)</h1>
         <p class="tagline">Cybersecurity student · CTF player · Python</p>
         <nav aria-label="Primary">
@@ -60,9 +68,7 @@
             <ul>
                 <li>
                     <strong>BSc (Hons) Ethical Hacking and Cybersecurity</strong><br>
-                    <span class="meta">Softwarica College of IT &amp; E-Commerce, in collaboration with Coventry University 
-                        <i>(2025 - Present)</i>
-                    </span>
+                    <span class="meta">Softwarica College of IT &amp; E-Commerce, in collaboration with Coventry University <i>(2025 - Present)</i></span>
                 </li>
             </ul>
         </section>
@@ -91,46 +97,57 @@
             </ul>
         </section>
 
-        <section class="ctf" id="ctf" aria-labelledby="ctf-title">  
+        <section class="ctf" id="ctf" aria-labelledby="ctf-title">
             <h2 id="ctf-title">CTF</h2>
             <p>Team lead of <strong><a href="https://ctftime.org/team/437744" target="_blank" rel="noopener noreferrer">D00msDay</a></strong>, a capture-the-flag team. I play CTFs to practice security skills under time pressure.</p>
             <h3>Highlights</h3>
             <ul>
-                <li><a href="https://netanixctf.xyz/u/Dr450n" target="_blank" rel="noopener noreferrer">Netanix CTF profile</a>, Rank 9</li>
-                <li><a href="https://lnkd.in/p/g-yWWc_3" target="_blank" rel="noopener noreferrer">DFIR 2026</a>, Top 18, 2026</li>
-                <li> <a href="https://lnkd.in/p/gusJSTM3" target="_blank" rel="noopener noreferrer">HackAstra CTF Qualifiers 2026</a>, 82nd place out of 455, 2026</li>
-                <li><a href="https://lnkd.in/p/g7-RYafA" target="_blank" rel="noopener noreferrer">Softwarica 24hr CTF</a>, 4th place, 2026</li>
+                <li><a href="https://netanixctf.xyz/u/Dr450n" target="_blank" rel="noopener noreferrer">Netanix CTF profile</a><span class="result">Rank 9</span></li>
+                <li><a href="https://lnkd.in/p/g-yWWc_3" target="_blank" rel="noopener noreferrer">DFIR 2026</a><span class="result">Top 18</span></li>
+                <li><a href="https://lnkd.in/p/gusJSTM3" target="_blank" rel="noopener noreferrer">HackAstra CTF Qualifiers 2026</a><span class="result">82nd of 455</span></li>
+                <li><a href="https://lnkd.in/p/g7-RYafA" target="_blank" rel="noopener noreferrer">Softwarica 24hr CTF 2026</a><span class="result">4th place</span></li>
             </ul>
         </section>
 
         <section class="labs" id="labs" aria-labelledby="labs-title">
             <h2 id="labs-title">Hands-on Labs</h2>
             <p>Penetration testing practice on live lab platforms.</p>
-            <ul>
-                <li><a href="https://profile.hackthebox.com/profile/019d46a1-68c0-7114-a2ce-6fd3281d8020" target="_blank" rel="noopener noreferrer">HackTheBox</a>
-                    <ul>
-                        <li>Level: 35</li>
-                        <li>Total XP: 16325</li>
-                        <li>Highest Streak: 35 weeks</li>
-                        <li>HTB Rank: Skilled </li>
-                    </ul>
-                </li>
-                <li><a href="https://tryhackme.com/p/Dr450n" target="_blank" rel="noopener noreferrer">TryHackMe</a>
-                <ul>
-                    <li>Rank: Top 4% (102437)</li>
-                    <li>Capability Score: 55</li>
-                    <li>Highest Streak: 139 Days</li>
-                    <li>Points gained: 11027</li>
-                    <li>Rooms completed: 126</li>
-                </ul>
-                </li>
-            </ul>
+
+            <div class="platforms">
+                <article class="platform">
+                    <div class="platform-head">
+                        <h3><a href="https://profile.hackthebox.com/profile/019d46a1-68c0-7114-a2ce-6fd3281d8020" target="_blank" rel="noopener noreferrer">HackTheBox</a></h3>
+                        <span class="rank">Rank: Skilled</span>
+                    </div>
+                    <dl class="stats">
+                        <div><dt>Level</dt><dd>35</dd></div>
+                        <div><dt>Total XP</dt><dd>16,325</dd></div>
+                        <div><dt>Best streak (weeks)</dt><dd>35</dd></div>
+                    </dl>
+                </article>
+
+                <article class="platform platform-thm">
+                    <div class="platform-head">
+                        <h3><a href="https://tryhackme.com/p/Dr450n" target="_blank" rel="noopener noreferrer">TryHackMe</a></h3>
+                        <span class="rank">Top 4%</span>
+                    </div>
+                    <dl class="stats">
+                        <div><dt>Rank</dt><dd>102,437</dd></div>
+                        <div><dt>Rooms completed</dt><dd>126</dd></div>
+                        <div><dt>Points earned</dt><dd>11,027</dd></div>
+                        <div><dt>Best streak (days)</dt><dd>139</dd></div>
+                        <div><dt>Capability score</dt><dd>55</dd></div>
+                    </dl>
+                </article>
+            </div>
+
+            <p class="meta stats-note">Stats as of November 2026. Live numbers are on each profile.</p>
         </section>
 
         <section class="skills" id="skills" aria-labelledby="skills-title">
             <h2 id="skills-title">Skills</h2>
             <ul>
-                <li><a href=""></a>CTF Player</li>
+                <li>CTF Player</li>
                 <li>Network Security</li>
                 <li>Programming (Python)</li>
                 <li>Shell Scripting</li>

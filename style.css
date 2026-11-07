@@ -248,7 +248,9 @@ main {
 }
 
 .about,
-.projects {
+.projects,
+.ctf,
+.labs {
   grid-column: 1 / -1;
 }
 
@@ -362,7 +364,7 @@ main li::before {
 
 /* Projects as cards */
 .projects ul {
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
   gap: 1rem;
 }
 
@@ -444,6 +446,131 @@ main li::before {
   color: var(--accent);
   border: 1px solid rgba(var(--accent-rgb), 0.4);
   border-radius: 999px;
+}
+
+/* ---------- CTF highlights: event on the left, result on the right ---------- */
+.ctf ul {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 0.75rem;
+}
+
+.ctf li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  border-radius: 10px;
+}
+
+.ctf li::before {
+  content: none;
+}
+
+.result {
+  padding: 0.2rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+}
+
+/* ---------- Lab platforms (HackTheBox / TryHackMe) ---------- */
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.platform {
+  padding: 1.25rem;
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: 10px;
+}
+
+/* HackTheBox keeps amber, TryHackMe switches to cyan */
+.platform-thm {
+  --accent: var(--cyan);
+  --accent-rgb: var(--cyan-rgb);
+}
+
+.platform-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.platform h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.platform h3 a {
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.rank {
+  padding: 0.25rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--void);
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+/* dt (label) comes first in the HTML for screen readers,
+   column-reverse shows the big number above it */
+.stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  padding: 0.8rem 0.9rem;
+  background: rgba(5, 8, 22, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.stats dt {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.stats-note {
+  margin: 1.1rem 0 0;
 }
 
 /* ---------- Footer (optional) ---------- */
