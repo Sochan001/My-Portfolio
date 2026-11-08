@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sochan Dangol | Cybersecurity Student and CTF Player</title>
 
-    <!-- SEO and browser UI -->
     <meta name="description" content="Portfolio of Sochan Dangol, a BSc Ethical Hacking and Cybersecurity student focused on network security, ethical hacking and digital forensics. Projects, CTF work and contact details.">
     <meta name="author" content="Sochan Dangol">
     <meta name="theme-color" content="#050816">
     <meta name="color-scheme" content="dark">
 
-    <!-- Privacy: send only the origin to other sites when a link is clicked -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!--
-        Content-Security-Policy (CSP), disabled on purpose for now.
-        Enable it once the site is hosted, then open DevTools > Console and
-        fix any "Refused to load" messages. A real HTTP header is stronger
-        than a meta tag, so move it to your server config when you can.
-
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <!-- CSP is off for now. Enable it after hosting and fix any "Refused to load" errors in DevTools > Console:
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://www.htbbadge.tech; frame-src https://tryhackme.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
     -->
 
-    <!-- Link previews (LinkedIn, WhatsApp, Discord). Change the domain if the site lives elsewhere. -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sochan Dangol | Cybersecurity Student and CTF Player">
     <meta property="og:description" content="Ethical hacking and cybersecurity student. Projects, CTF work and hands-on labs.">
@@ -31,12 +23,10 @@
     <meta property="og:url" content="https://portfolio.sochan.com.np/">
     <meta name="twitter:card" content="summary">
 
-    <!-- Favicon: an "S_" monogram in the page colors-->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Fonts (loaded here instead of inside the CSS so they load faster) -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap">
@@ -47,8 +37,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header>
-        <img src="avatar.webp" alt="Hacker avatar with a glowing amber dragon and two blue dragons behind" class="profile-picture" width="600" height="600" fetchpriority="high" decoding="async">
-        <h1 class="name">Sochan Dangol (Dr450n)</h1>
+        <h1 class="name">Sochan Dangol</h1>
         <p class="tagline">Cybersecurity student · CTF player · Python</p>
         <nav aria-label="Primary">
             <a href="#about">About</a>
@@ -61,18 +50,40 @@
     </header>
 
     <main id="main">
-        <section class="about" id="about" aria-labelledby="about-title">
-            <h2 id="about-title">About Me</h2>
-            <p>Hello! I'm Sochan Dangol, a passionate cybersecurity student with a strong
-                interest in network security, ethical hacking, and digital forensics.
-            </p>
-            <h3>Education</h3>
-            <ul>
-                <li>
-                    <strong>BSc (Hons) Ethical Hacking and Cybersecurity</strong><br>
-                    <span class="meta">Softwarica College of IT &amp; E-Commerce, in collaboration with Coventry University <i>(2025 - Present)</i></span>
-                </li>
-            </ul>
+        <section class="about id-card" id="about" aria-labelledby="about-title">
+            
+            <input type="checkbox" id="flip-toggle" class="flip-toggle" aria-label="Flip the photo between the avatar and the real photo">
+
+            <div class="id-photo">
+                <label for="flip-toggle" class="flip">
+                    <span class="flip-inner">
+                        <img class="flip-face flip-front" src="avatar.webp" alt="Hacker avatar with a glowing amber dragon and two blue dragons behind" width="600" height="600" fetchpriority="high" decoding="async">
+                        <img class="flip-face flip-back" src="me.webp" alt="Portrait photo" width="600" height="667" decoding="async">
+                    </span>
+                </label>
+            </div>
+
+            <div class="id-details">
+                <h2 id="about-title" class="sr-only">About me</h2>
+                <p class="id-name">
+                    <span class="alias"><span aria-hidden="true">⇜𝕯𝖗450𝖓⇝</span><span class="sr-only">Dr450n</span></span>
+                    <span class="real">Sochan Dangol</span>
+                </p>
+                <p>Hello! I'm a passionate cybersecurity student with a strong
+                    interest in network security, ethical hacking, and digital forensics.
+                </p>
+                <dl class="id-fields">
+                    <div class="span-2"><dt>Program</dt><dd>BSc (Hons) Ethical Hacking and Cybersecurity</dd></div>
+                    <div><dt>Enrolled</dt><dd>2025 - Present</dd></div>
+                    <div class="wide"><dt>Institution</dt><dd>Softwarica College of IT &amp; E-Commerce, in collaboration with Coventry University</dd></div>
+                    <div class="wide"><dt>Team</dt><dd>D00msDay, team lead</dd></div>
+                </dl>
+            </div>
+
+            <div class="id-strip" aria-hidden="true">
+                <span class="id-barcode"></span>
+                <span class="id-serial">DR450N · D00MSDAY</span>
+            </div>
         </section>
 
         <section class="projects" id="projects" aria-labelledby="projects-title">
@@ -118,32 +129,23 @@
             <div class="platforms">
                 <article class="platform">
                     <div class="platform-head">
-                        <h3><a href="https://profile.hackthebox.com/profile/019d46a1-68c0-7114-a2ce-6fd3281d8020" target="_blank" rel="noopener noreferrer">HackTheBox</a></h3>
-                        <span class="rank">Rank: Skilled</span>
+                        <h3><a href="https://app.hackthebox.com/public/users/2857234" target="_blank" rel="noopener noreferrer">HackTheBox</a></h3>
                     </div>
-                    <dl class="stats">
-                        <div><dt>Level</dt><dd>35</dd></div>
-                        <div><dt>Total XP</dt><dd>16,325</dd></div>
-                        <div><dt>Best streak (weeks)</dt><dd>35</dd></div>
-                    </dl>
+                    <a class="badge" href="https://app.hackthebox.com/public/users/2857234" target="_blank" rel="noopener noreferrer">
+                        <img src="https://www.htbbadge.tech/api/badge?user=2857234" alt="HackTheBox profile badge" loading="lazy" referrerpolicy="no-referrer">
+                    </a>
                 </article>
 
                 <article class="platform platform-thm">
                     <div class="platform-head">
                         <h3><a href="https://tryhackme.com/p/Dr450n" target="_blank" rel="noopener noreferrer">TryHackMe</a></h3>
-                        <span class="rank">Top 4%</span>
                     </div>
-                    <dl class="stats">
-                        <div><dt>Rank</dt><dd>102,437</dd></div>
-                        <div><dt>Rooms completed</dt><dd>126</dd></div>
-                        <div><dt>Points earned</dt><dd>11,027</dd></div>
-                        <div><dt>Best streak (days)</dt><dd>139</dd></div>
-                        <div><dt>Capability score</dt><dd>55</dd></div>
-                    </dl>
+                    <!-- If the badge does not render, remove the sandbox attribute. -->
+                    <div class="badge">
+                        <iframe class="badge-frame" src="https://tryhackme.com/badge/t/0c1e9167cdc3b42282888686a2f1894f4626865be5a06d3966dbb2215d886fdeb4e9d99e13fcb705d503781fd11a7220/embed?theme=dark" width="400" height="172" title="TryHackMe profile badge" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                    </div>
                 </article>
             </div>
-
-            <p class="meta stats-note">Stats as of November 2026. Live numbers are on each profile.</p>
         </section>
 
         <section class="skills" id="skills" aria-labelledby="skills-title">
@@ -161,14 +163,14 @@
             <p>If you'd like to get in touch, feel free to reach out via:</p>
             <ul>
                 <li>Email: <a href="mailto:msg@sochan.com.np">msg@sochan.com.np</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/sochan-dangol-2678a3336/" target="_blank" rel="noopener noreferrer">Sochan Dangol</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/sochan-dangol-2678a3336/" target="_blank" rel="noopener noreferrer">Sochan-Dangol</a></li>
                 <li>GitHub: <a href="https://github.com/Sochan001" target="_blank" rel="noopener noreferrer">Sochan001</a></li>
             </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Sochan Dangol</p>
+        <p>&copy; 2026 Dr450n</p>
     </footer>
 </body>
 </html>

@@ -1,9 +1,4 @@
-/* ==========================================================================
-   Sochan Dangol | Portfolio
-     VOID   deep navy-black   
-     CYAN   electric cyan     
-     AMBER  molten gold       
-   ========================================================================== */
+/* Portfolio stylesheet. Palette from the avatar: void navy, electric cyan, molten amber. */
 
 /* ---------- Design tokens ---------- */
 :root {
@@ -13,7 +8,7 @@
   --cyan-rgb: 0, 229, 255;
   --amber: #ffb020;
   --amber-rgb: 255, 176, 32;
-  --plasma: #1a4dff; /* glow tint of the cyan, not a 4th color */
+  --plasma: #1a4dff;
 
   --text: #e6ecff;
   --muted: #8d9bc4;
@@ -43,7 +38,6 @@ body {
   line-height: 1.7;
   color: var(--text);
   overflow-x: hidden;
-  /* three "flames": gold on top, blue left, cyan right, like the artwork */
   background:
     radial-gradient(60rem 40rem at 50% -12%, rgba(var(--amber-rgb), 0.2), transparent 62%),
     radial-gradient(50rem 50rem at -12% 25%, rgba(26, 77, 255, 0.3), transparent 60%),
@@ -52,7 +46,6 @@ body {
   background-attachment: fixed;
 }
 
-/* faint cyber grid that fades out toward the edges */
 body::before {
   content: "";
   position: fixed;
@@ -67,7 +60,6 @@ body::before {
   mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
 }
 
-/* subtle CRT scanlines */
 body::after {
   content: "";
   position: fixed;
@@ -117,7 +109,6 @@ a:focus-visible {
   text-shadow: 0 0 12px currentColor;
 }
 
-/* external links get a small arrow */
 a[target="_blank"]::after {
   content: "\2197";
   display: inline-block;
@@ -126,7 +117,6 @@ a[target="_blank"]::after {
   opacity: 0.7;
 }
 
-/* keyboard users: jump straight to the content */
 .skip-link {
   position: absolute;
   top: -4rem;
@@ -166,25 +156,6 @@ header {
   inherits: false;
 }
 
-.profile-picture {
-  display: block;
-  width: clamp(170px, 28vw, 240px);
-  height: auto; /* overrides the height="600" attribute so the image stays square */
-  aspect-ratio: 1;
-  margin: 0 auto 1.75rem;
-  object-fit: cover;
-  border-radius: 32%;
-  border: 4px solid transparent;
-  /* padding-box = image area, border-box = the spinning cyan/amber ring */
-  background:
-    linear-gradient(var(--void), var(--void)) padding-box,
-    conic-gradient(from var(--angle), var(--cyan), var(--plasma), var(--amber), var(--cyan)) border-box;
-  box-shadow:
-    0 0 40px rgba(var(--cyan-rgb), 0.35),
-    0 0 100px rgba(var(--amber-rgb), 0.22);
-  animation: spin 7s linear infinite;
-}
-
 .name {
   margin: 0;
   font-family: var(--font-mono);
@@ -193,7 +164,6 @@ header {
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #fff;
-  /* chromatic aberration: cyan one side, amber the other */
   text-shadow:
     2px 0 rgba(var(--cyan-rgb), 0.85),
     -2px 0 rgba(var(--amber-rgb), 0.85);
@@ -207,7 +177,6 @@ header {
   animation: blink 1s steps(1) infinite;
 }
 
-/* optional: <p class="tagline">...</p> under the name */
 .tagline {
   margin: 0.75rem 0 0;
   font-family: var(--font-mono);
@@ -219,7 +188,6 @@ header {
   color: var(--amber);
 }
 
-/* optional: <nav> inside <header> */
 nav {
   display: flex;
   flex-wrap: wrap;
@@ -269,7 +237,6 @@ main > section {
   transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* cyan and amber alternate down the page */
 .projects,
 .labs,
 .skills {
@@ -277,7 +244,6 @@ main > section {
   --accent-rgb: var(--amber-rgb);
 }
 
-/* glowing tab on the top edge */
 main > section::before {
   content: "";
   position: absolute;
@@ -317,8 +283,14 @@ h2 {
   color: var(--accent);
 }
 h2::before {
-  content: "// ";
-  opacity: 0.55;
+  content: "";
+  display: inline-block;
+  width: 1.6rem;
+  height: 2px;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
 }
 
 h3 {
@@ -354,7 +326,7 @@ main li {
 }
 
 main li::before {
-  content: "\203A"; /* single right angle quote */
+  content: "\203A";
   position: absolute;
   left: 0;
   font-family: var(--font-mono);
@@ -362,7 +334,6 @@ main li::before {
   color: var(--accent);
 }
 
-/* Projects as cards */
 .projects ul {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
   gap: 1rem;
@@ -409,7 +380,6 @@ main li::before {
   margin-bottom: 0;
 }
 
-/* Skills as chips */
 .skills ul {
   display: flex;
   flex-wrap: wrap;
@@ -436,7 +406,6 @@ main li::before {
   box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.4);
 }
 
-/* optional: <span class="tag"> chips for tech stacks inside project cards */
 .tag {
   display: inline-block;
   margin: 0.25rem 0.35rem 0 0;
@@ -446,6 +415,248 @@ main li::before {
   color: var(--accent);
   border: 1px solid rgba(var(--accent-rgb), 0.4);
   border-radius: 999px;
+}
+
+/* ---------- About as an ID card ---------- */
+main > section.id-card {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, 860px);
+  display: grid;
+  grid-template-columns: minmax(180px, 250px) minmax(0, 1fr);
+  grid-template-areas:
+    "photo details"
+    "strip strip";
+  gap: 1.5rem 2rem;
+  overflow: hidden;
+  border-radius: 22px;
+  border-color: rgba(var(--cyan-rgb), 0.28);
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(var(--amber-rgb), 0.12), transparent 55%),
+    radial-gradient(100% 90% at 0% 100%, rgba(26, 77, 255, 0.2), transparent 60%),
+    linear-gradient(155deg, rgba(10, 18, 48, 0.9), rgba(5, 8, 22, 0.95));
+}
+
+/* holographic sheen on hover (replaces the glowing tab) */
+main > section.id-card::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: none;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(var(--cyan-rgb), 0.1) 45%,
+    rgba(var(--amber-rgb), 0.12) 55%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  background-position: 120% 0;
+  transition: background-position 0.9s ease;
+}
+
+main > section.id-card:hover::before {
+  width: 100%;
+  background-position: -20% 0;
+}
+
+.id-photo {
+  grid-area: photo;
+  position: relative;
+  align-self: start;
+}
+
+/* the checkbox stays focusable for keyboard users but is invisible */
+.flip-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.flip {
+  display: block;
+  aspect-ratio: 3.6 / 4;
+  perspective: 1000px;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.flip-toggle:focus-visible ~ .id-photo .flip {
+  outline: 2px dashed var(--amber);
+  outline-offset: 4px;
+}
+
+.flip-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.flip-toggle:checked ~ .id-photo .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 70%; /* keeps the face in frame when the avatar is cropped */
+  border-radius: 16px;
+  border: 3px solid transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* padding-box = the image, border-box = the spinning cyan/amber ring */
+  background:
+    linear-gradient(var(--void), var(--void)) padding-box,
+    conic-gradient(from var(--angle), var(--cyan), var(--plasma), var(--amber), var(--cyan)) border-box;
+  box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.25);
+  animation: spin 7s linear infinite;
+}
+
+.flip-back {
+  object-position: 50% 30%; /* faces sit higher in a normal portrait */
+  transform: rotateY(180deg);
+}
+
+.id-details {
+  grid-area: details;
+  min-width: 0;
+}
+
+.id-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem 1.25rem;
+  margin: 1.25rem 0 0;
+}
+
+.id-fields .wide {
+  grid-column: 1 / -1;
+}
+
+.id-fields dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.id-fields dd {
+  margin: 0.1rem 0 0;
+  line-height: 1.35;
+  color: #fff;
+}
+
+.id-card .id-name {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 1px 0 rgba(var(--cyan-rgb), 0.7), -1px 0 rgba(var(--amber-rgb), 0.7);
+}
+
+/* the fancy letters come from math/symbol fonts, so list them first */
+.alias {
+  font-family: "Cambria Math", "Noto Sans Math", "Segoe UI Symbol", "STIX Two Math", "Apple Symbols", var(--font-mono), serif;
+  font-weight: 400;
+}
+
+.real {
+  display: none;
+}
+
+.flip-toggle:checked ~ .id-details .alias {
+  display: none;
+}
+
+.flip-toggle:checked ~ .id-details .real {
+  display: inline;
+}
+
+.id-fields .span-2 {
+  grid-column: span 2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+.id-strip {
+  grid-area: strip;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.id-barcode {
+  flex: 1;
+  height: 34px;
+  opacity: 0.6;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cyan) 0 2px,
+    transparent 2px 5px,
+    var(--cyan) 5px 6px,
+    transparent 6px 9px,
+    var(--cyan) 9px 12px,
+    transparent 12px 14px,
+    var(--cyan) 14px 15px,
+    transparent 15px 19px
+  );
+}
+
+.id-serial {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  main > section.id-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "details"
+      "strip";
+  }
+
+  .id-photo {
+    width: min(100%, 220px);
+    justify-self: center;
+  }
+
+  .id-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .id-serial {
+    display: none;
+  }
 }
 
 /* ---------- CTF highlights: event on the left, result on the right ---------- */
@@ -497,7 +708,6 @@ main li::before {
   border-radius: 10px;
 }
 
-/* HackTheBox keeps amber, TryHackMe switches to cyan */
 .platform-thm {
   --accent: var(--cyan);
   --accent-rgb: var(--cyan-rgb);
@@ -524,56 +734,41 @@ main li::before {
   font-weight: 800;
 }
 
-.rank {
-  padding: 0.25rem 0.8rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  white-space: nowrap;
-  color: var(--void);
-  background: var(--accent);
-  border-radius: 999px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.75rem;
-  margin: 0;
-}
-
-/* dt (label) comes first in the HTML for screen readers,
-   column-reverse shows the big number above it */
-.stats > div {
+.badge {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  padding: 0.8rem 0.9rem;
-  background: rgba(5, 8, 22, 0.55);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 172px;
 }
 
-.stats dt {
-  font-size: 0.8rem;
-  line-height: 1.3;
-  color: var(--muted);
+a.badge {
+  background-image: none;
+  text-shadow: none;
 }
 
-.stats dd {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #fff;
+a.badge[target="_blank"]::after {
+  content: none;
 }
 
-.stats-note {
-  margin: 1.1rem 0 0;
+.badge img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-/* ---------- Footer (optional) ---------- */
+.badge-frame {
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  height: 172px;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  color-scheme: light; /* the badge draws its own dark background */
+}
+
+/* ---------- Footer ---------- */
 footer {
   padding: 2rem 1rem 3rem;
   text-align: center;
